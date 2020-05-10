@@ -9,7 +9,6 @@ import javax.persistence.*;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
 
     @Column(nullable = false)

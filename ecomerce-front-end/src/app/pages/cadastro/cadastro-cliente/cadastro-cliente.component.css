@@ -1,8 +1,9 @@
 mat-card{    
     padding: 25px;
+    padding-bottom: 25px;
     width: 100%;
     max-width: 700px;
-    min-width: 300px;
+    min-width: 200px;
 }
 
 .container{  
@@ -12,6 +13,7 @@ mat-card{
 
   button{
     margin-top: 20px;
+    margin-bottom: 40px;
     width: 100%;
     background-color: #5CB85C;
     color: #FFFFFF ;
@@ -27,15 +29,15 @@ mat-card{
   }
 
   table {
-    padding: 25px;    
+    padding: 25px;        
     width: 100%;
-    min-width: 300px;
+    max-width: 700px;
+    min-width: 400px;
   }
 
   #labelListaClientes{
     margin-top: 50px;
     margin-bottom: 5px;  
-    width: 100%;
-    max-width: 800px; 
+    max-width: 650px; 
   }
   

@@ -10,6 +10,8 @@ import { CadastroProdutoComponent } from './pages/cadastro/cadastro-produto/cada
 import { NovoPedidoComponent } from './pages/pedido/novo-pedido/novo-pedido.component';
 import { ConsultarPedidoComponent } from './pages/pedido/consultar-pedido/consultar-pedido.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],

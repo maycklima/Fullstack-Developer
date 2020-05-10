@@ -10,7 +10,6 @@ import javax.validation.constraints.NotBlank;
 public class Produto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
 
     @NotBlank
@@ -18,5 +17,4 @@ public class Produto {
 
     @NotBlank
     private String precoUnitario;
-
 }

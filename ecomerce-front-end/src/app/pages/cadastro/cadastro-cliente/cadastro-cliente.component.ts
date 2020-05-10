@@ -1,22 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-
-export interface PeriodicElement {
-  name: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Hydrogen' },
-  { name: 'Helium' },
-  { name: 'Lithium' },
-  { name: 'Beryllium' },
-  { name: 'Boron' },
-  { name: 'Carbon' },
-  { name: 'Nitrogen' },
-  { name: 'Oxygen' },
-  { name: 'Fluorine' },
-  { name: 'Neon' },
-];
+import { ClienteService } from './../../../services/cliente.service';
+import { Cliente } from '../../../models/cliente.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -26,23 +12,38 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class CadastroClienteComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['codigo', 'nome', 'deletar'];
+
+  cliente: Cliente[];
+  novoCliente;
+  dataSource: any;
 
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private clienteService: ClienteService) { }
 
   ngOnInit() {
-
     this.formulario = this.formBuilder.group({
+      codigo: [Math.floor(1000 + Math.random() * 9000)],
       nome: [null]
-
     });
 
+    this.clienteService.list().subscribe(value => {
+      const data: Cliente[] = value;
+      this.dataSource = new MatTableDataSource(data);
+      console.log(data);
+    });
   }
 
   onSubmit() {
-    console.log(this.formulario);
+    if (this.formulario.valid) {
+      this.novoCliente = this.formulario.value;
+
+      this.clienteService.create(this.novoCliente).subscribe(
+        success => this.formulario.reset(),
+        error => console.error(error),
+        () => console.log('resquest completo')
+      );
+    }
   }
 }
