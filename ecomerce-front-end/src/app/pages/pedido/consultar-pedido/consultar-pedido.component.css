@@ -1,0 +1,47 @@
+mat-card{    
+  padding: 25px;
+  padding-bottom: 25px;
+  width: 100%;
+  min-width: 200px;
+}
+
+table{
+  padding: 25px;        
+  width: 100%;
+  min-width: 400px;
+}
+
+.container{  
+   padding: 80px;
+   padding-top: 50px;
+  }
+
+  button{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    background-color: #5CB85C;
+    color: #FFFFFF ;
+  }
+
+  mat-form-field{
+   padding-top: 10px;   
+    width: 100%
+  }
+
+  mat-card-title{
+      font-size: 20px;
+  }
+
+
+  img{
+    height: 20px;
+    margin-left: 20px;
+}
+
+  #labelListaClientes{
+    margin-bottom: 5px;  
+    max-width: 730px;
+    width: 100%; 
+  }
+  

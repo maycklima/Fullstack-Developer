@@ -11,6 +11,9 @@ import { NovoPedidoComponent } from './pages/pedido/novo-pedido/novo-pedido.comp
 import { ConsultarPedidoComponent } from './pages/pedido/consultar-pedido/consultar-pedido.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { ProdutoComponent } from './components/produto/produto.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
     CadastroClienteComponent,
     CadastroProdutoComponent,
     NovoPedidoComponent,
-    ConsultarPedidoComponent
+    ConsultarPedidoComponent,
+    ClienteComponent,
+    CarrinhoComponent,
+    ProdutoComponent
   ],
   imports: [
     BrowserModule,

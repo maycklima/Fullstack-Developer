@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Pedido } from './../../../models/pedido';
+import { FormBuilder } from '@angular/forms';
+import { PedidoService } from 'src/app/services/pedido.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-consultar-pedido',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultarPedidoComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['numero', 'cliente.nome', 'qntItens', 'valorFrete', 'valorTotal', 'deletar'];
 
-  ngOnInit(): void {
+  pedido: Pedido[];
+  dataSource: any;
+  logo = '/assets/icones/icone-pedidos.png';
+
+  constructor(private formBuilder: FormBuilder, private pedidoService: PedidoService) { }
+
+  ngOnInit() {
+    this.pedidoService.list().subscribe(value => {
+      const data: Pedido[] = value;
+      this.dataSource = new MatTableDataSource(data);
+      console.log(data);
+    });
   }
-
 }

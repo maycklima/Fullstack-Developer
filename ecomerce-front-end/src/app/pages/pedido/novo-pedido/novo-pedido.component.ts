@@ -9,6 +9,12 @@ export class NovoPedidoComponent implements OnInit {
 
   constructor() { }
 
+
+
+  iconCliente = '/assets/icones/icone-cliente.png';
+  iconCarrinho = '/assets/icones/icone-carrinho.png';
+  iconTotal = '/assets/icones/icone-total.png';
+
   ngOnInit(): void {
   }
 

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from '../../../models/cliente.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -17,10 +18,11 @@ export class CadastroClienteComponent implements OnInit {
   cliente: Cliente[];
   novoCliente;
   dataSource: any;
+  logo = '/assets/icones/icone-cliente.png';
 
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private clienteService: ClienteService) { }
+  constructor(private formBuilder: FormBuilder, private clienteService: ClienteService, private router: Router) { }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
@@ -45,5 +47,6 @@ export class CadastroClienteComponent implements OnInit {
         () => console.log('resquest completo')
       );
     }
+    this.router.navigate(['/cadastroProduto']);
   }
 }

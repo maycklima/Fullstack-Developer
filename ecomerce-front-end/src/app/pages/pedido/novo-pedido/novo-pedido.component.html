@@ -1,1 +1,19 @@
-<p>novo-pedido works!</p>
+<div class="container" fxFlex="100" fxLayout="column" fxLayoutAlign="center center">
+
+    <app-cliente></app-cliente>
+
+    <div id="labelListaProdutos">
+    </div>
+
+    <app-carrinho></app-carrinho>
+
+    <div id="labelListaProdutos">
+    </div>
+
+    <mat-card class="total" fxLayout="column" fxFlex="100">
+        <mat-card-title>
+            <mat-label><img [src]="iconTotal" alt="image" width="20" height="20"> Total</mat-label>
+        </mat-card-title>
+    </mat-card>
+
+</div>
