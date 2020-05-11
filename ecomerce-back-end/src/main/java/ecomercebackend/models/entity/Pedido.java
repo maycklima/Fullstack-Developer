@@ -14,9 +14,10 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(nullable = false)
+
     private Cliente cliente;
 
-    private int qntItens;
+    private String qntItens;
 
     private String valorTotal;
 

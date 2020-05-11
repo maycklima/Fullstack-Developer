@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/ecomerce")
-public class Controller {
+public class ControllerTest {
 
     @RequestMapping("/ola")
     public String ola(){
