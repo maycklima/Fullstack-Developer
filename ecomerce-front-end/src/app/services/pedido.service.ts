@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { take } from 'rxjs/operators';
 import { Produto } from '../models/produto.model';
-import { Pedido } from '../models/pedido';
+import { Pedido } from '../models/pedido.model';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +18,7 @@ export class PedidoService {
         return this.http.get<Pedido[]>(this.API);
     }
 
-    create(pedido) {
+    save(pedido) {
         return this.http.post(this.API, pedido).pipe(take(1));
     }
 }

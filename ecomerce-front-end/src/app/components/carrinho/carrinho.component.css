@@ -1,3 +1,13 @@
 mat-card-title{
     font-size: 20px;
 }
+
+mat-card-content{
+    margin-top: 10px;
+  }
+
+  .item-shopping-cart{
+    margin-bottom: 20px;
+    margin-left: 18px;
+    margin-right: 18px;
+  }

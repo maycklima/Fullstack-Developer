@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pedido } from './../../../models/pedido';
+import { Pedido } from '../../../models/pedido.model';
 import { FormBuilder } from '@angular/forms';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { MatTableDataSource } from '@angular/material/table';

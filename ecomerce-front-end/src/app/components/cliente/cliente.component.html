@@ -1,8 +1,21 @@
 <mat-card class="cliente" fxLayout="column" fxFlex="100">
     <mat-card-title>
-        <mat-label><img [src]="iconCliente" alt="image" width="20" height="20"> Clientes</mat-label>
+        <mat-label><img [src]="iconCliente" alt="image" width="20" height="20">Clientes</mat-label>
     </mat-card-title>
     <mat-card-content>
-        Hello
+        <mat-form-field appearance="outline" fxFlex="50">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Informe um cliente *" [matAutocomplete]="auto" [formControl]="formulario">
+            <button mat-button *ngIf="selectedCliente" matSuffix mat-icon-button aria-label="Clear"
+                (click)="formulario.reset()">
+                <mat-icon>close</mat-icon>
+            </button>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSubmit()">
+                <mat-option *ngFor=" let option of options" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-icon matSuffix *ngIf="!selectedCliente">search</mat-icon>
+        </mat-form-field>
     </mat-card-content>
 </mat-card>

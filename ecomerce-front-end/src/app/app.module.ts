@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { ProdutoComponent } from './components/produto/produto.component';
+import { CalculoValoresComponent } from './components/calculo-valores/calculo-valores.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ProdutoComponent } from './components/produto/produto.component';
     ConsultarPedidoComponent,
     ClienteComponent,
     CarrinhoComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    CalculoValoresComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ export class ToolbarComponent implements OnInit {
 
   logo = '/assets/icones/logotipo-maximatech.png'
 
+
   constructor() { }
 
   ngOnInit(): void {

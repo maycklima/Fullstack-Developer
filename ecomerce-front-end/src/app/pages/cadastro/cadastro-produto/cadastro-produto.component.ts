@@ -38,7 +38,7 @@ export class CadastroProdutoComponent implements OnInit {
 
   onSubmit() {
     if (this.formulario.valid) {
-      console.log(this.formulario.value)
+      console.log(this.formulario.value);
       this.novoProduto = this.formulario.value;
       this.clienteService.create(this.novoProduto).subscribe(
         success => this.formulario.reset(),

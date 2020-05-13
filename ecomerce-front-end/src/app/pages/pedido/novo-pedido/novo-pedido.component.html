@@ -1,11 +1,12 @@
 <div class="container" fxFlex="100" fxLayout="column" fxLayoutAlign="center center">
 
-    <app-cliente></app-cliente>
+    <app-cliente (clienteSelecionado)="onClienteSelecionado($event)"></app-cliente>
+    {{impressaoCliente}}
 
     <div id="labelListaProdutos">
     </div>
 
-    <app-carrinho></app-carrinho>
+    <app-carrinho (carrinhoDeCompras)="onCarrinhoDeComprasPreenchido($event)"></app-carrinho>
 
     <div id="labelListaProdutos">
     </div>
@@ -14,6 +15,36 @@
         <mat-card-title>
             <mat-label><img [src]="iconTotal" alt="image" width="20" height="20"> Total</mat-label>
         </mat-card-title>
+        <mat-card-content>
+            <form>
+                <div fxFlex="100" fxLayout="row">
+                    <div fxFlexOffset="1.7" fxFlex="60" fxLayout="row">
+                        <div fxLayout="column" fxFlex="85">
+                            <mat-label>Itens:</mat-label>
+                            <mat-label>Frete:</mat-label>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <mat-label>Total:</mat-label>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="center end" fxFlex="10">
+                            <p>{{valorItens | currency:'BRL'}}</p>
+                            <p>{{pedido.valorFrete | currency:'BRL'}}</p>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <p>{{pedido.valorTotal | currency:'BRL'}}</p>
+                        </div>
+                    </div>
+                    <div fxFlex="40" fxLayout="column" fxLayoutAlign="center">
+                        <button mat-raised-button color="primary" aria-label="finalizar" style="color: #e6ebe4"
+                            (click)="finalizarPedido()" type="submit">
+                            Finalizar Pedido
+                        </button>
+                        <button mat-raised-button (click)="limparCarrinho()">
+                            Limpar carrinho
+                        </button>
+                        <mat-error *ngIf="erro">Selecione um cliente para finalizar a compra!</mat-error>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
     </mat-card>
 
 </div>
