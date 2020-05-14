@@ -22,7 +22,9 @@ public class PedidoController
     public List<Pedido> listarPedidos(){return pedidoRepository.findAll();}
 
     @PostMapping
-    public Pedido cadastrarPedido(@RequestBody Pedido pedido){return pedidoRepository.save(pedido);}
+    public Pedido cadastrarPedido(@RequestBody Pedido pedido){
+        System.out.println(pedido);
+        return pedidoRepository.save(pedido);}
 
     @DeleteMapping("/{codigo}")
     public Pedido removerCliente(@PathVariable Integer codigo){

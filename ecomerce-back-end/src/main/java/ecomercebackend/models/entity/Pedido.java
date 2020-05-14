@@ -9,7 +9,6 @@ import javax.persistence.*;
 public class Pedido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int numero;
 
     @ManyToOne
