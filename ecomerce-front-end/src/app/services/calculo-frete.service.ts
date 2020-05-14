@@ -12,6 +12,6 @@ export class CalculoFreteService {
   }
 
   calcularFrete(totalItens) {
-    return this.httpClient.post(`${environment.frete_api_url}calculofrete`, totalItens);
+    return this.httpClient.post(`${environment.FRETE_API}frete`, totalItens);
   }
 }

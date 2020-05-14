@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterContentInit, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { CarrinhoValores } from 'src/app/models/carrinho-valores.model';
 import { PedidoService } from 'src/app/services/pedido.service';
@@ -11,7 +11,7 @@ import { CalculoFreteService } from 'src/app/services/calculo-frete.service';
   templateUrl: './novo-pedido.component.html',
   styleUrls: ['./novo-pedido.component.css']
 })
-export class NovoPedidoComponent implements OnInit {
+export class NovoPedidoComponent implements OnInit, AfterViewChecked {
 
   constructor(private carrinhoService: CarrinhoService,
     // tslint:disable-next-line: align
@@ -19,7 +19,9 @@ export class NovoPedidoComponent implements OnInit {
     // tslint:disable-next-line: align
     private router: Router,
     // tslint:disable-next-line: align
-    private calculoFreteService: CalculoFreteService) { }
+    private calculoFreteService: CalculoFreteService,
+    // tslint:disable-next-line: align
+    private changeDetector: ChangeDetectorRef) { }
 
   iconCliente = '/assets/icones/icone-cliente.png';
   iconCarrinho = '/assets/icones/icone-carrinho.png';
@@ -30,15 +32,23 @@ export class NovoPedidoComponent implements OnInit {
   valorTotal: any;
   valorItens: number;
   pedido = new Pedido();
+  qntProdutos: number;
+  valorFreteTemp: number;
 
   produtos: CarrinhoValores[] = [];
 
   ngOnInit(): void {
+    this.pedido.numero = Math.floor(10000000 + Math.random() * 90000000);
   }
+
+  ngAfterViewChecked() {
+    this.changeDetector.detectChanges();
+  }
+
 
   onClienteSelecionado(clienteSelecionado) {
     this.impressaoCliente = clienteSelecionado.cliente.nome;
-    // this.pedido.cliente = clienteSelecionado.cliente;
+    this.pedido.cliente = clienteSelecionado.cliente;
   }
 
   onProdutoSelecionado(evento) {
@@ -72,21 +82,23 @@ export class NovoPedidoComponent implements OnInit {
       value => {
         this.pedido.valorFrete = Number(value);
         this.pedido.valorTotal = Number(valorTotal) + Number(this.pedido.valorFrete);
-        this.pedido.qtdItens = totalItens;
       }
     );
+    this.pedido.qntItens = totalItens;
     this.valorItens = valorTotal;
     this.valorTotal = valorTotal + this.pedido.valorFrete;
-
-    console.log('Valor TOtal: ' + this.valorTotal);
   }
 
-
   finalizarPedido() {
-    console.log(this.pedido);
+    console.log('Pedido finalizado, numero: ' + this.pedido.numero);
+    console.log('Pedido finalizado, cliente: ' + this.pedido.cliente);
+    console.log('Pedido finalizado, qntItens: ' + this.pedido.qntItens);
+    console.log('Pedido finalizado, valorFrete: ' + this.pedido.valorFrete);
+    console.log('Pedido finalizado, qntTotal: ' + this.pedido.valorTotal);
     if (this.pedido.cliente) {
-      this.pedidoService.save(this.pedido).subscribe(dados => console.log(dados));
-      this.router.navigate(['/consulta-pedido']);
+      this.pedidoService.save(this.pedido).subscribe();
+      this.router.navigate(['/consultar-pedido']);
+      this.limparCarrinho();
     } else {
       this.erro = true;
     }

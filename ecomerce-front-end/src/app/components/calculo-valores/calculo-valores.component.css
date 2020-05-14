@@ -1,0 +1,18 @@
+mat-form-field{
+    width: 1px;
+    height: 1px;
+}
+
+mat-label{
+    margin-left: 5px;
+}
+
+.total{
+    margin-top: 5px;
+    font-size: large; 
+    padding-left: 15px;
+}
+
+.calculos{
+    margin-top: 5px;
+}

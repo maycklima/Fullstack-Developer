@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { take } from 'rxjs/operators';
-import { Produto } from '../models/produto.model';
 import { Pedido } from '../models/pedido.model';
 
 @Injectable({
@@ -19,6 +18,8 @@ export class PedidoService {
     }
 
     save(pedido) {
+        console.log('Dentro do save');
+        console.log(pedido);
         return this.http.post(this.API, pedido).pipe(take(1));
     }
 }

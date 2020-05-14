@@ -41,6 +41,7 @@ export class CarrinhoComponent implements OnInit {
     if (this.produtosComValorCalculado.length === 0) {
       this.adicionarProduto(valores);
     } else {
+
       const valor = this.produtosComValorCalculado.find(x => x.codigoProduto === valores.codigo);
       if (valor !== undefined) {
         const newList = this.produtosComValorCalculado.filter(x => x.codigoProduto !== valor.codigoProduto);

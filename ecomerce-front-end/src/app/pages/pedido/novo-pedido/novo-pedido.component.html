@@ -18,31 +18,32 @@
         <mat-card-content>
             <form>
                 <div fxFlex="100" fxLayout="row">
-                    <div fxFlexOffset="1.7" fxFlex="60" fxLayout="row">
-                        <div fxLayout="column" fxFlex="85">
+                    <div fxFlexOffset="1.7" fxFlex="90" fxLayout="row">
+                        <div fxLayout="column" fxFlex="100" fxLayoutAlign="space-around start">
                             <mat-label>Itens:</mat-label>
                             <mat-label>Frete:</mat-label>
-                            <mat-divider [inset]="true"></mat-divider>
+                            <mat-divider [inset]=" true">
+                            </mat-divider>
                             <mat-label>Total:</mat-label>
                         </div>
-                        <div fxLayout="column" fxLayoutAlign="center end" fxFlex="10">
-                            <p>{{valorItens | currency:'BRL'}}</p>
-                            <p>{{pedido.valorFrete | currency:'BRL'}}</p>
-                            <mat-divider [inset]="true"></mat-divider>
-                            <p>{{pedido.valorTotal | currency:'BRL'}}</p>
+                        <div fxLayout="column" fxFlex="20" fxLayoutAlign="space-around end">
+                            <mat-label>{{valorItens | currency:'BRL'}}</mat-label>
+                            <mat-label>{{pedido.valorFrete | currency:'BRL'}}</mat-label>
+                            <mat-divider [inset]=" true">
+                            </mat-divider>
+                            <mat-label>{{pedido.valorTotal | currency:'BRL'}}</mat-label>
                         </div>
                     </div>
-                    <div fxFlex="40" fxLayout="column" fxLayoutAlign="center">
-                        <button mat-raised-button color="primary" aria-label="finalizar" style="color: #e6ebe4"
-                            (click)="finalizarPedido()" type="submit">
-                            Finalizar Pedido
-                        </button>
-                        <button mat-raised-button (click)="limparCarrinho()">
-                            Limpar carrinho
-                        </button>
-                        <mat-error *ngIf="erro">Selecione um cliente para finalizar a compra!</mat-error>
-                    </div>
                 </div>
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center">
+                    <button mat-raised-button aria-label="finalizar" (click)="finalizarPedido()" type="submit"
+                        type="button">
+                        Finalizar Pedido
+                    </button>
+                    <button class="limpar" mat-raised-button (click)="limparCarrinho()"> Limpar carrinho</button>
+                    <mat-error *ngIf="erro">Selecione um cliente para finalizar a compra!</mat-error>
+                </div>
+
             </form>
         </mat-card-content>
     </mat-card>

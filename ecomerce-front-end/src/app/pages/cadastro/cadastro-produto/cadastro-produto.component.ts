@@ -3,6 +3,7 @@ import { Produto } from 'src/app/models/produto.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProdutoService } from 'src/app/services/produto.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { CarrinhoValores } from 'src/app/models/carrinho-valores.model';
 
 
 @Component({
@@ -17,12 +18,17 @@ export class CadastroProdutoComponent implements OnInit {
   produto: Produto[];
   novoProduto: Produto;
   dataSource: any;
+  produtos: CarrinhoValores[] = [];
 
   formulario: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private clienteService: ProdutoService) { }
 
   ngOnInit() {
+    this.resetaFormulario();
+  }
+
+  resetaFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [Math.floor(1000 + Math.random() * 9000)],
       nome: [null],
@@ -41,7 +47,7 @@ export class CadastroProdutoComponent implements OnInit {
       console.log(this.formulario.value);
       this.novoProduto = this.formulario.value;
       this.clienteService.create(this.novoProduto).subscribe(
-        success => this.formulario.reset(),
+        success => this.resetaFormulario(),
         error => console.error(error),
         () => console.log('resquest completo')
       );

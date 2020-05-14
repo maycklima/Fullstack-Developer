@@ -35,6 +35,15 @@ app-carrinho {
     color: #FFFFFF ;
   }
 
+  .limpar{
+    margin-top: 20px;
+    width: 100%;
+    background-color:white;
+    color:black ;
+  }
+
+  
+
   mat-form-field{
    padding-top: 10px;   
     width: 100%
