@@ -1,6 +1,6 @@
 package ecomercebackend.service.interfaces;
 
-import ecomercebackend.models.entity.Cliente;
+import ecomercebackend.models.Cliente;
 
 import java.util.List;
 

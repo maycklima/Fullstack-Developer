@@ -1,6 +1,6 @@
 package ecomercebackend.controller;
 
-import ecomercebackend.models.entity.Cliente;
+import ecomercebackend.models.Cliente;
 import ecomercebackend.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(name = "clientes", path = "/clientes")
 @ResponseBody
 public class ClienteController
@@ -28,5 +27,5 @@ public class ClienteController
         Optional<Cliente> cliente = clienteRepository.findById(codigo);
         clienteRepository.delete(cliente.get());
         return cliente.get();
-}
+    }
 }

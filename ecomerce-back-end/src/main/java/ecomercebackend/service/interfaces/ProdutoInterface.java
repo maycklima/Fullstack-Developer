@@ -1,6 +1,6 @@
 package ecomercebackend.service.interfaces;
 
-import ecomercebackend.models.entity.Produto;
+import ecomercebackend.models.Produto;
 
 import java.util.List;
 

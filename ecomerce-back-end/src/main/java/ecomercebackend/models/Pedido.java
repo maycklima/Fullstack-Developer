@@ -1,4 +1,4 @@
-package ecomercebackend.models.entity;
+package ecomercebackend.models;
 
 import lombok.Data;
 

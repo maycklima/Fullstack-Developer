@@ -1,7 +1,6 @@
 package ecomercebackend.controller;
 
-import ecomercebackend.models.entity.Cliente;
-import ecomercebackend.models.entity.Pedido;
+import ecomercebackend.models.Pedido;
 import ecomercebackend.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(name = "pedidos", path = "/pedidos")
 @ResponseBody
 public class PedidoController
