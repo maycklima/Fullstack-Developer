@@ -10,7 +10,7 @@ public class CalculaFrete {
 
     public double valorFreteCalculado(int totalItens)
     {
-        var frete = (Math.random() * ((10 - 5) + 1)) + 5;
+        var frete = (Math.random() * ((9 - 5) + 1)) + 5;
         System.out.println(frete);
 
         return frete * totalItens;
