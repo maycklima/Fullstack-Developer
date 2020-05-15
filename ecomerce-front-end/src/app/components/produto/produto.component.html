@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" fxFlex="50">
-    <mat-label>Nome</mat-label>
-    <input matInput placeholder="Selecione um produto" [matAutocomplete]="auto" [formControl]="formulario">
+    <mat-label>Selecione um produto</mat-label>
+    <input matInput placeholder="Nome do produto" [matAutocomplete]="auto" [formControl]="formulario">
     <button mat-button *ngIf="selectedProduto" matSuffix mat-icon-button aria-label="Clear"
         (click)="formulario.reset()">
         <mat-icon>close</mat-icon>

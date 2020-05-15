@@ -20,4 +20,8 @@ export class ProdutoService {
   create(produto) {
     return this.http.post(this.API, produto).pipe(take(1));
   }
+
+  delete(produto) {
+    return this.http.delete(`${this.API}/${produto}`).pipe(take(1));
+  }
 }

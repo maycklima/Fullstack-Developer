@@ -1,11 +1,11 @@
 <mat-card class="cliente" fxLayout="column" fxFlex="100">
     <mat-card-title>
-        <mat-label><img [src]="iconCliente" alt="image" width="20" height="20">Clientes</mat-label>
+        <mat-label class="clientes"><img [src]="iconCliente" alt="image" width="20" height="20">Clientes</mat-label>
     </mat-card-title>
     <mat-card-content>
         <mat-form-field appearance="outline" fxFlex="50">
-            <mat-label>Nome</mat-label>
-            <input matInput placeholder="Informe um cliente *" [matAutocomplete]="auto" [formControl]="formulario">
+            <mat-label>Informe um cliente *</mat-label>
+            <input matInput placeholder="Nome do cliente" [matAutocomplete]="auto" [formControl]="formulario">
             <button mat-button *ngIf="selectedCliente" matSuffix mat-icon-button aria-label="Clear"
                 (click)="formulario.reset()">
                 <mat-icon>close</mat-icon>

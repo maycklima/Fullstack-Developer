@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { CarrinhoProduto } from 'src/app/models/produtos-carrinho.model';
 import { CarrinhoValores } from 'src/app/models/carrinho-valores.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-carrinho',
@@ -10,16 +12,20 @@ import { CarrinhoValores } from 'src/app/models/carrinho-valores.model';
 })
 export class CarrinhoComponent implements OnInit {
 
-  constructor(private carrinhoService: CarrinhoService) { }
+  constructor(private carrinhoService: CarrinhoService, private snackBar: MatSnackBar) { }
 
   iconCarrinho = '/assets/icones/icone-carrinho.png';
   produtos: CarrinhoProduto[] = [];
-  impressaoProduto;
   produtosComValorCalculado: CarrinhoValores[] = [];
 
   @Output() carrinhoDeCompras = new EventEmitter();
 
   ngOnInit() {
+    this.populaCarrinho();
+  }
+
+  // metodo responsavel por popular o carrinho com os produtos ja existentes
+  populaCarrinho() {
     this.carrinhoService.getProdutos().subscribe(produtos => {
       this.produtos = produtos;
     },
@@ -32,10 +38,13 @@ export class CarrinhoComponent implements OnInit {
     );
   }
 
+  // evento ao selecionar um produto no campo "produtos"
   onProdutoSelecionado(evento) {
     this.carrinhoService.addProduto(evento.produto);
-    this.impressaoProduto = evento;
   }
+
+  // metodo para remover um produto
+
 
   onProdutoCalculado(valores) {
     if (this.produtosComValorCalculado.length === 0) {
@@ -53,6 +62,7 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
+  // metodo para adicionar um produto ao carrinho.service
   adicionarProduto(valores) {
     const valorTotal = new CarrinhoValores();
     valorTotal.codigoProduto = valores.codigo;
@@ -63,5 +73,4 @@ export class CarrinhoComponent implements OnInit {
     this.carrinhoDeCompras.emit({ carrinho: this.produtosComValorCalculado });
     this.carrinhoService.setProdutosSelecionados(this.produtosComValorCalculado);
   }
-
 }

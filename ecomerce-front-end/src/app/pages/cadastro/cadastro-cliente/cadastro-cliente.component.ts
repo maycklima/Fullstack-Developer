@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from '../../../models/cliente.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -22,7 +24,9 @@ export class CadastroClienteComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private clienteService: ClienteService, private router: Router) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private formBuilder: FormBuilder, private clienteService: ClienteService, private router: Router, public snackBar: MatSnackBar) {
+  }
 
   ngOnInit() {
     this.resetaFormulario();
@@ -31,7 +35,7 @@ export class CadastroClienteComponent implements OnInit {
   resetaFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [Math.floor(1000 + Math.random() * 9000)],
-      nome: [null]
+      nome: [null, Validators.required]
     });
 
     this.clienteService.list().subscribe(value => {
@@ -41,14 +45,24 @@ export class CadastroClienteComponent implements OnInit {
     });
   }
 
+  deletarCliente(cliente) {
+    this.clienteService.delete(cliente.codigo).subscribe(
+      success => this.snackBar.open('Cliente ' + cliente.nome + ' removido com sucesso', 'Fechar', { duration: 2000 }),
+      erro => this.snackBar.open('Erro ao deletar o cliente: ' + cliente.nome, 'Fechar', { duration: 2000 }),
+      () => this.resetaFormulario()
+    );
+  }
+
   onSubmit() {
-    if (this.formulario.valid) {
+    this.novoCliente = this.formulario.value;
+    if (!this.formulario.valid) {
+      this.snackBar.open('Digite um nome para o cliente', 'Fechar', { duration: 2000 });
+    } else {
       console.log(this.formulario.value);
-      this.novoCliente = this.formulario.value;
       this.clienteService.create(this.novoCliente).subscribe(
-        success => this.resetaFormulario(),
-        error => console.error(error),
-        () => console.log('resquest completo')
+        success => this.snackBar.open('Cliente adicionado com sucesso', 'Fechar', { duration: 2000 }),
+        error => this.snackBar.open('Erro ao adicionar cliente', 'Fechar', { duration: 2000 }),
+        () => this.resetaFormulario()
       );
     }
   }

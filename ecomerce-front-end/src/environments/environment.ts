@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:8080/',
-  FRETE_API: 'http://localhost:8084/'
+  API: 'http://localhost:8080/ecomerce-api/',
+  FRETE_API: 'http://localhost:8080/calculo-frete-api/'
 };
 
 /*

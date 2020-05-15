@@ -8,11 +8,11 @@ mat-label{
 }
 
 .total{
-    margin-top: 5px;
-    font-size: large; 
-    padding-left: 15px;
+    font-size: 20px;    
+    font-family: Euclid Circular B-Light;  
 }
 
-.calculos{
-    margin-top: 5px;
+.calculos{    
+    font-size: 16px;    
+    font-family: Euclid Circular B-Light; 
 }

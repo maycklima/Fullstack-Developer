@@ -4,12 +4,19 @@ mat-card{
     width: 100%;
     max-width: 700px;
     min-width: 200px;
+    
 }
 
 .container{  
    padding: 80px;
    padding-top: 50px;
   }
+
+ .delete:hover{
+  top:-2px;box-shadow:0 2px 2px #666;
+  background-color: grey;
+  cursor: pointer; 
+ }
 
   button{
     margin-top: 20px;
@@ -33,10 +40,4 @@ mat-card{
     width: 100%;
     max-width: 700px;
     min-width: 400px;
-  }
-
-  #labelListaClientes{
-    margin-top: 50px;
-    margin-bottom: 5px;  
-    max-width: 650px; 
   }

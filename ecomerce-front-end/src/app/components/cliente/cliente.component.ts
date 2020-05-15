@@ -73,5 +73,4 @@ export class ClienteComponent implements OnInit {
     this.clienteSelecionado.emit({ cliente: this.selectedCliente });
     console.log(this.selectedCliente);
   }
-
 }

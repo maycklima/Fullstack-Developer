@@ -1,21 +1,25 @@
 <mat-card fxLayout="column" fxFlex="100">
     <mat-card-title>
-        <mat-label><img [src]="iconCarrinho" alt="image" width="20" height="20"> Carrinho</mat-label>
+        <mat-label class="carrinho"><img [src]="iconCarrinho" alt="image" width="20" height="20"> Carrinho</mat-label>
     </mat-card-title>
     <mat-card-content>
         <app-produto (produtoSelecionado)="onProdutoSelecionado($event)"></app-produto>
-
-        <mat-card *ngFor="let prod of produtos" class="item-shopping-cart">
+        <mat-card id="produtosCarrinho" *ngFor="let prod of produtos" class="item-shopping-cart">
             <div fxFlex="85">
                 <mat-card-subtitle>{{prod.codigo}}</mat-card-subtitle>
                 <mat-card-title>{{prod.nome}}</mat-card-title>
             </div>
-            <div fxFlex="15">
+            <div class="calculos" fxFlex="15">
                 <app-calculo-valores [prod]="prod" (valorCalculado)="onProdutoCalculado($event)"></app-calculo-valores>
             </div>
+            <!--
+            <div>
+                <mat-icon class="delete" matSuffix (click)="onRemove(prod)">close</mat-icon>
+            </div>
+           -->
         </mat-card>
         <div fxLayoutAlign="center" *ngIf="produtos.length === 0">
-            <img src="assets/icones/imagem-carrinho-empty-state.png" width="150" height="150">
+            <img class="vazio" src="assets/icones/imagem-carrinho-empty-state.png" width="150" height="150">
         </div>
     </mat-card-content>
 </mat-card>

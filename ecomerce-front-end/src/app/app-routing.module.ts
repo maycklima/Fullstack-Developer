@@ -10,6 +10,7 @@ import { CadastroProdutoComponent } from './pages/cadastro/cadastro-produto/cada
 const routes: Routes = [
   { path: 'novo-pedido', component: NovoPedidoComponent },
   { path: 'consultar-pedido', component: ConsultarPedidoComponent },
+  { path: 'consultar-pedido/id', component: ConsultarPedidoComponent },
   { path: 'cadastro-cliente', component: CadastroClienteComponent },
   { path: 'cadastro-produto', component: CadastroProdutoComponent }
 ];

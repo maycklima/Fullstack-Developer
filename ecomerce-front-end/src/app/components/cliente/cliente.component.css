@@ -5,3 +5,9 @@
   mat-card-content{
     margin-top: 10px;
   }
+
+  .clientes{
+    font-size: 22.75px;
+    font-family: Euclid Circular B-Semibold; 
+    color: #373A3C;
+  } 

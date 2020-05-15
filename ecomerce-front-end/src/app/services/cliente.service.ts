@@ -20,4 +20,8 @@ export class ClienteService {
   create(cliente) {
     return this.http.post(this.API, cliente).pipe(take(1));
   }
+
+  delete(codigo) {
+    return this.http.delete(`${this.API}/${codigo}`).pipe(take(1));
+  }
 }

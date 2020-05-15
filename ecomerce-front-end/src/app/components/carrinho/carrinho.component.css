@@ -1,13 +1,37 @@
 mat-card-title{
-    font-size: 20px;
+    font-size: 20px;    
+    font-family: Euclid Circular B-Semibold;  
+}
+
+mat-card-subtitle{
+  font-size: 16px;    
+  font-family: Euclid Circular B-Regular;  
 }
 
 mat-card-content{
     margin-top: 10px;
   }
 
-  .item-shopping-cart{
+  .delete:hover{
+    top:-2px;
+    box-shadow:0 2px 2px #666;
+    background-color: grey;
+    cursor: pointer; 
+   }
+
+  .item-shopping-cart{    
     margin-bottom: 20px;
     margin-left: 18px;
     margin-right: 18px;
   }
+
+  .vazio{
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+
+  .carrinho{
+    font-size: 22.75px;
+    font-family: Euclid Circular B-Semibold; 
+    color: #373A3C;
+  } 

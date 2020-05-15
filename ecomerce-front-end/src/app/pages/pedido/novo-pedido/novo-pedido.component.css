@@ -4,6 +4,10 @@ mat-card{
     min-width: 700px;
 }
 
+.valores{  
+  height: 150px;
+}
+
 .container{  
   padding: 80px;
   padding-top: 50px;
@@ -18,7 +22,6 @@ app-cliente{
 app-carrinho {    
     width: 100%;
     min-width: 700px;
-    min-height: 455px;
 }
 
 .total{    
@@ -27,12 +30,18 @@ app-carrinho {
     min-height: 250px;
 }
 
-
   button{
     margin-top: 20px;
     width: 100%;
     background-color: #5CB85C;
     color: #FFFFFF ;
+    font-family: Euclid Circular B-Light;
+    font-size: 20px;
+  }
+
+  mat-label{
+    font-family: Euclid Circular B-Light;
+    font-size: 20px;
   }
 
   .limpar{
@@ -40,9 +49,7 @@ app-carrinho {
     width: 100%;
     background-color:white;
     color:black ;
-  }
-
-  
+  } 
 
   mat-form-field{
    padding-top: 10px;   
@@ -60,7 +67,18 @@ app-carrinho {
     max-width: 700px;
   }
 
-  #labelListaProdutos{
+  #separator{
     margin-top: 29px;  
     max-width: 700px;
   }
+
+  .labelPedido{
+    font-size: 26px;
+    font-family: Euclid Circular B-Bold;
+  } 
+
+  .total{
+    font-size: 22.75px;
+    font-family: Euclid Circular B-Semibold; 
+    color: #373A3C;
+  } 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CarrinhoProduto } from '../models/produtos-carrinho.model';
 import { CarrinhoValores } from '../models/carrinho-valores.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Produto } from './../models/produto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,6 @@ export class CarrinhoService {
       localStorage.setItem(this.keyStorage, JSON.stringify(produtos));
     });
   }
-
-
 
   addProduto(produto: CarrinhoProduto) {
     produto.quantidade = 1;
@@ -46,13 +45,13 @@ export class CarrinhoService {
     return this.produtosSubject.asObservable();
   }
 
-  setProdutosSelecionados(produtosSelecionados: CarrinhoValores[]) {
-    this.produtosSelecionados = produtosSelecionados;
-  }
-
-  limparProdutos() {
+  limparCarrinho() {
+    // tslint:disable-next-line: prefer-for-of
     this.produtos = [];
     this.produtosSubject.next(this.produtos);
   }
 
+  setProdutosSelecionados(produtosSelecionados: CarrinhoValores[]) {
+    this.produtosSelecionados = produtosSelecionados;
+  }
 }

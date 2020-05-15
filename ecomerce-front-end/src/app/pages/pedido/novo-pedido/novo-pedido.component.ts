@@ -5,6 +5,8 @@ import { PedidoService } from 'src/app/services/pedido.service';
 import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido.model';
 import { CalculoFreteService } from 'src/app/services/calculo-frete.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CarrinhoComponent } from 'src/app/components/carrinho/carrinho.component';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -21,19 +23,21 @@ export class NovoPedidoComponent implements OnInit, AfterViewChecked {
     // tslint:disable-next-line: align
     private calculoFreteService: CalculoFreteService,
     // tslint:disable-next-line: align
-    private changeDetector: ChangeDetectorRef) { }
+    private changeDetector: ChangeDetectorRef,
+    // tslint:disable-next-line: align
+    private snackBar: MatSnackBar) { }
 
   iconCliente = '/assets/icones/icone-cliente.png';
   iconCarrinho = '/assets/icones/icone-carrinho.png';
   iconTotal = '/assets/icones/icone-total.png';
   impressaoCliente: any;
-  erro = false;
 
   valorTotal: any;
   valorItens: number;
   pedido = new Pedido();
+  freteRecebido: number;
   qntProdutos: number;
-  valorFreteTemp: number;
+  verificaFrete = true;
 
   produtos: CarrinhoValores[] = [];
 
@@ -62,10 +66,16 @@ export class NovoPedidoComponent implements OnInit, AfterViewChecked {
   }
 
   limparCarrinho() {
-    this.carrinhoService.limparProdutos();
+    this.produtos = [];
+    this.pedido.qntItens = null;
+    this.valorItens = 0;
+    this.pedido.valorFrete = 0;
+    this.pedido.valorTotal = 0;
+    this.calcularPrecoTotal(this.produtos);
+    this.carrinhoService.limparCarrinho();
   }
 
-  // tslint:disable-next-line: adjacent-overload-signatures
+  // calcula o preço total do carrinho
   calcularPrecoTotal(produtos: CarrinhoValores[]) {
     let valorTotal = 0;
     let totalItens = 0;
@@ -77,31 +87,43 @@ export class NovoPedidoComponent implements OnInit, AfterViewChecked {
       totalItens += Number(valor.quantidadeTotalDeItens);
     });
 
+    // metodo para verificar se já foi recebido um valor para o frete
+    if (this.verificaFrete) {
+      this.calculoFreteService.calcularFrete({ totalItens }).subscribe(
+        value => {
+          this.freteRecebido = Number(value);
+          this.pedido.valorFrete = Number(value);
+          this.pedido.valorTotal = Number(valorTotal) + Number(this.pedido.valorFrete);
+        });
+      this.verificaFrete = false;
+    } else {
+      this.pedido.valorFrete = totalItens * this.freteRecebido;
+      this.pedido.valorTotal = valorTotal + this.pedido.valorFrete;
+    }
 
-    this.calculoFreteService.calcularFrete({ totalItens }).subscribe(
-      value => {
-        this.pedido.valorFrete = Number(value);
-        this.pedido.valorTotal = Number(valorTotal) + Number(this.pedido.valorFrete);
-      }
-    );
+    this.verificaFrete = false;
     this.pedido.qntItens = totalItens;
     this.valorItens = valorTotal;
     this.valorTotal = valorTotal + this.pedido.valorFrete;
   }
 
+  // metodo para finalizar o pedido
   finalizarPedido() {
-    console.log('Pedido finalizado, numero: ' + this.pedido.numero);
-    console.log('Pedido finalizado, cliente: ' + this.pedido.cliente);
-    console.log('Pedido finalizado, qntItens: ' + this.pedido.qntItens);
-    console.log('Pedido finalizado, valorFrete: ' + this.pedido.valorFrete);
-    console.log('Pedido finalizado, qntTotal: ' + this.pedido.valorTotal);
-    if (this.pedido.cliente) {
-      this.pedidoService.save(this.pedido).subscribe();
-      this.router.navigate(['/consultar-pedido']);
-      this.limparCarrinho();
+    if (!this.pedido.cliente) {
+      this.snackBar.open('Selecione um cliente para fazer o pedido', 'Fechar', { duration: 2000 });
+      // tslint:disable-next-line: triple-equals
+    } else if (this.pedido.qntItens == null || this.pedido.qntItens == 0) {
+      this.snackBar.open('Selecione algum produto para colocar no carrinho', 'Fechar', { duration: 2000 });
     } else {
-      this.erro = true;
+      console.log('Pedido finalizado, numero: ' + this.pedido.numero);
+      console.log('Pedido finalizado, cliente: ' + this.pedido.cliente);
+      console.log('Pedido finalizado, qntItens: ' + this.pedido.qntItens);
+      console.log('Pedido finalizado, valorFrete: ' + this.pedido.valorFrete);
+      console.log('Pedido finalizado, qntTotal: ' + this.pedido.valorTotal);
+      this.snackBar.open('Pedido realizado com sucesso', 'Fechar', { duration: 2000 });
+      this.pedidoService.save(this.pedido).subscribe();
+      this.limparCarrinho();
+      this.router.navigate(['/consultar-pedido']);
     }
   }
 }
-

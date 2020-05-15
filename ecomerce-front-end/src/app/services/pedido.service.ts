@@ -22,4 +22,8 @@ export class PedidoService {
         console.log(pedido);
         return this.http.post(this.API, pedido).pipe(take(1));
     }
+
+    delete(pedido) {
+        return this.http.delete(`${this.API}/${pedido}`).pipe(take(1));
+    }
 }

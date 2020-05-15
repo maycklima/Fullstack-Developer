@@ -1,23 +1,27 @@
-<div class="container" fxFlex="100" fxLayout="column" fxLayoutAlign="center center">
+<div class="container" fxFlex="100" fxLayout="column" fxLayoutAlign="center start">
+
+    <mat-label class="labelPedido">Novo pedido #{{pedido.numero }}</mat-label>
+
+    <div id="separator">
+    </div>
 
     <app-cliente (clienteSelecionado)="onClienteSelecionado($event)"></app-cliente>
-    {{impressaoCliente}}
 
-    <div id="labelListaProdutos">
+    <div id="separator">
     </div>
 
     <app-carrinho (carrinhoDeCompras)="onCarrinhoDeComprasPreenchido($event)"></app-carrinho>
 
-    <div id="labelListaProdutos">
+    <div id="separator">
     </div>
 
     <mat-card class="total" fxLayout="column" fxFlex="100">
         <mat-card-title>
-            <mat-label><img [src]="iconTotal" alt="image" width="20" height="20"> Total</mat-label>
+            <mat-label class="total"><img [src]="iconTotal" alt="image" width="20" height="20"> Total</mat-label>
         </mat-card-title>
         <mat-card-content>
             <form>
-                <div fxFlex="100" fxLayout="row">
+                <div class="valores" fxFlex="100" fxLayout="row">
                     <div fxFlexOffset="1.7" fxFlex="90" fxLayout="row">
                         <div fxLayout="column" fxFlex="100" fxLayoutAlign="space-around start">
                             <mat-label>Itens:</mat-label>
@@ -41,11 +45,9 @@
                         Finalizar Pedido
                     </button>
                     <button class="limpar" mat-raised-button (click)="limparCarrinho()"> Limpar carrinho</button>
-                    <mat-error *ngIf="erro">Selecione um cliente para finalizar a compra!</mat-error>
                 </div>
 
             </form>
         </mat-card-content>
     </mat-card>
-
 </div>

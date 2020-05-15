@@ -1,10 +1,11 @@
 <form [formGroup]="form" fxFlex>
     <div fxLayout="column">
         <div class="calculos" fxLayout="row" fxLayoutAlign="end">
-            <input name="quantidade" inline="true" fxFlex="15" type="text" [value]="prod.quantidade"
+            <input class="unitario" name="quantidade" inline="true" fxFlex="15" type="text" [value]="prod.quantidade"
                 (input)="onCalcularPrecoTotal(prod, $event)">
             <mat-label fxFlex="85" name="precoUnitario"> X {{prod.precoUnitario | currency:'BRL'}}</mat-label>
         </div>
+        <br>
         <div class="total" fxLayout="row" fxLayoutAlign="start">
             <mat-label class="total"><b name="valorTotal" for="valorTotal"
                     id="valorTotal">{{prod.valorTotal | currency:'BRL'}}</b>

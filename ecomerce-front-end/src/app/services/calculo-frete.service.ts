@@ -8,10 +8,13 @@ import { environment } from '../../environments/environment';
 export class CalculoFreteService {
 
 
+
+  private readonly API = `${environment.FRETE_API}frete`;
+
   constructor(public httpClient: HttpClient) {
   }
 
   calcularFrete(totalItens) {
-    return this.httpClient.post(`${environment.FRETE_API}frete`, totalItens);
+    return this.httpClient.post(this.API, totalItens);
   }
 }
