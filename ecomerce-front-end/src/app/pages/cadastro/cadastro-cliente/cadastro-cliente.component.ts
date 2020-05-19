@@ -20,7 +20,7 @@ export class CadastroClienteComponent implements OnInit {
   cliente: Cliente[];
   novoCliente;
   dataSource: any;
-  logo = '/assets/icones/icone-cliente.png';
+  logo = 'assets/icones/icone-cliente.png';
 
   formulario: FormGroup;
 

@@ -14,7 +14,7 @@ export class CarrinhoComponent implements OnInit {
 
   constructor(private carrinhoService: CarrinhoService, private snackBar: MatSnackBar) { }
 
-  iconCarrinho = '/assets/icones/icone-carrinho.png';
+  iconCarrinho = 'assets/icones/icone-carrinho.png';
   produtos: CarrinhoProduto[] = [];
   produtosComValorCalculado: CarrinhoValores[] = [];
 

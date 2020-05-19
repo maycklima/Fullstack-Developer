@@ -27,9 +27,9 @@ export class NovoPedidoComponent implements OnInit, AfterViewChecked {
     // tslint:disable-next-line: align
     private snackBar: MatSnackBar) { }
 
-  iconCliente = '/assets/icones/icone-cliente.png';
-  iconCarrinho = '/assets/icones/icone-carrinho.png';
-  iconTotal = '/assets/icones/icone-total.png';
+  iconCliente = 'assets/icones/icone-cliente.png';
+  iconCarrinho = 'assets/icones/icone-carrinho.png';
+  iconTotal = 'assets/icones/icone-total.png';
   impressaoCliente: any;
 
   valorTotal: any;

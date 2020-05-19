@@ -10,61 +10,56 @@ body {
 
 @font-face{
     font-family: Euclid Circular B-Bold;
-    src: url(src\assets\fontes\EuclidCircularB-Bold.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-Bold.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-BoldItalic;
-    src: url(src\assets\fontes\EuclidCircularB-BoldItalic.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-BoldItalic.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-Light;
-    src: url(src\assets\fontes\EuclidCircularB-Light.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-Light.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-LightItalic;
-    src: url(src\assets\fontes\EuclidCircularB-LightItalic.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-LightItalic.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-Medium;
-    src: url(src\assets\fontes\EuclidCircularB-Medium.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-Medium.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-MediumItalic;
-    src: url(src\assets\fontes\EuclidCircularB-MediumItalic.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-MediumItalic.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-Regular;
-    src: url(src\assets\fontes\EuclidCircularB-Regular.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-Regular.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-RegularItalic;
-    src: url(src\assets\fontes\EuclidCircularB-RegularItalic.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-RegularItalic.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-Semibold;
-    src: url(src\assets\fontes\EuclidCircularB-Semibold.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-Semibold.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-SemiboldItalic;
-    src: url(src\assets\fontes\EuclidCircularB-SemiboldItalic.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-SemiboldItalic.otf) format("opentype");
 }
 
 @font-face{
     font-family: Euclid Circular B-Bold;
-    src: url(src\assets\fontes\EuclidCircularB-Bold.otf) format("opentype");
-}
-
-@font-face{
-    font-family: Euclid Circular B-Bold;
-    src: url(src\assets\fontes\EuclidCircularB-Bold.otf) format("opentype");
+    src: url(assets/fontes/EuclidCircularB-Bold.otf) format("opentype");
 }
 

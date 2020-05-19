@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  logo = '/assets/icones/logotipo-maximatech.png'
+  logo = 'assets/icones/logotipo-maximatech.png';
 
 
   constructor() { }

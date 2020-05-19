@@ -17,7 +17,7 @@ export class ClienteComponent implements OnInit {
 
   constructor(private clienteService: ClienteService) { }
 
-  iconCliente = '/assets/icones/icone-cliente.png';
+  iconCliente = 'assets/icones/icone-cliente.png';
 
   options: string[] = [];
   formulario = new FormControl();

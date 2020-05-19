@@ -16,7 +16,7 @@ export class ConsultarPedidoComponent implements OnInit {
 
   pedido: Pedido[];
   dataSource: any;
-  logo = '/assets/icones/icone-pedidos.png';
+  logo = 'assets/icones/icone-pedidos.png';
 
   constructor(private formBuilder: FormBuilder, private pedidoService: PedidoService, private snackBar: MatSnackBar) {
     this.populaLista();
