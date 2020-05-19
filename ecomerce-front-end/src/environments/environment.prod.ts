@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API: '/',
-  FRETE_API: '/'
+  API: 'http://localhost:8080/ecomerce-api/',
+  FRETE_API: 'http://localhost:8080/calculo-frete-api/'
 };
